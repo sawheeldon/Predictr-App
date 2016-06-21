@@ -21,21 +21,24 @@
 <body>
     <div class="container col-xs-6 col-xs-offset-3">
         <h2>Predictr App</h2>
-        <button data-toggle="collapse" data-target="#sign-in">Sign In</button>
+        <button data-toggle="collapse" data-target="#sign-in" class="btn btn-default">Sign In</button>
         <div id="sign-in" class="collapse">
             <form action="" method="">
-                <div class="form-group user-name">
-                    <label for="user-name">User Name</label>
-                    <input type="user-name" class="form-control" id="user-name">
+                <div class="form-group user-email">
+                    <label for="user-email-address">Email Address</label>
+                    <input type="user-email-address" class="form-control" id="user-email-address">
                 </div>
-                <div class="form-group email">
-                    <label for="email-address">Email Address</label>
-                    <input type="email-address" class="form-control" id="email-address">
+                <div class="form-group user-password">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" id="submit-user">
                 </div>
             </form>
         </div>
 
-        <button data-toggle="collapse" data-target="#sign-up">Sign Up</button>
+        <button data-toggle="collapse" data-target="#sign-up" class="btn btn-default">Sign Up</button>
 
         <div id="sign-up" class="collapse">
             <form action="" method="">
@@ -46,6 +49,13 @@
                 <div class="form-group new-email">
                     <label for="new-email-address">Email Address</label>
                     <input type="new-email-address" class="form-control" id="new-email-address">
+                </div>
+                <div class="form-group new-password">
+                    <label for="new-password">Password</label>
+                    <input type="new-password" class="form-control" id="new-password">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" id="submit-new-user">
                 </div>
             </form>
         </div>
