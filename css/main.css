@@ -29,16 +29,29 @@ General styles (General Module, wrapping around the modules bellow)
 
 body {
     text-align: center;
-    background-color: palegreen
+    background-color: palegreen;
+    color: dimgray;
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px
+}
+
+h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px
+}
+
+.top-container {
+    padding: 5rem;
 }
 
 .main-container {
     padding: 10rem;
-    padding-top: 20rem;
-    background-color: #7AFF5C
+    padding-top: 10rem;
+    background-color: aquamarine
 }
 
 .social-container {
+    margin-top: 2rem;
     padding: 2rem;
     background-color: aquamarine;
 }
