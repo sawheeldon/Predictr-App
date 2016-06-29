@@ -4,7 +4,7 @@
 
 var wikiTeamSearch = function (data) {
     var searchTeam = $("#team-name").val();
-    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + " Football Club " + "&format=json&callback=?";
+    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + " F.C. " + "&format=json&callback=?";
     $.ajax({
             url: dynamicURL,
             type: 'GET',
@@ -36,7 +36,7 @@ var wikiTeamSearch = function (data) {
 
 var wikiTeamSections = function (data) {
     var searchTeam = $("#team-name").val();
-    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + " Football Club " + "&format=json&callback=?";
+    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + " F.C. " + "&format=json&callback=?";
     $.ajax({
             url: dynamicURL,
             type: 'GET',
@@ -51,10 +51,10 @@ var wikiTeamSections = function (data) {
             //console.log("success");
             var html = "";
             $.each(data, function (index, value) {
-                html += '<div>' + value.text + '</div>';
-                console.log(value.text);
+                html += '<p>' + value.sections + '</p>';
+                console.log(value.sections);
             });
-            $('#wikiSections').html(html);
+            $('wikiSections').html(html);
         })
         .fail(function (jqXHR, error) { //this waits for the ajax to return with an error promise object
             var errorElem = showError(error);
