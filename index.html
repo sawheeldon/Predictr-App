@@ -20,12 +20,12 @@
 </head>
 
 <body>
-    <div class="container col-md-6 col-md-offset-3 top-container"></div>
-    <div class="container col-md-6 col-md-offset-3 main-container">
+    <div class="container col-lg-12 top-container"></div>
+    <div class="container col-lg-12 main-container">
         <img src="images/football-icons/png/football-1.png">
         <h1>Soccernopoly</h1>
         <p>Type in your team and get all the information you need.</p>
-        <div class="container col-xs-12">
+        <div class="container col-md-12 col-xs-12">
             <div class="search-container">
                 <form action="" method="">
                     <div class="form-group getTeam">
@@ -37,13 +37,43 @@
                     </div>
                 </form>
             </div>
+            <div class="container col-xs-12">
+                <div class="col-md-4">
+                    <button class="btn btn-default" data-toggle="collapse" data-target="#wiki"> Info </button>
+                    <div class="collapse" id="wiki">
+                        <div class="well wiki-container">
+                            <div id="wikiTeamTitle"></div>
+                            <div id="wikiTeamImage"></div>
+                            <div id="wikiSections"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-default" data-toggle="collapse" data-target="#fixtures"> Fixtures </button>
+                    <div class="collapse" id="fixtures">
+                        <div class="well fixture-container">
+                            <div id="fixResult"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-default" data-toggle="collapse" data-target="#videos"> Videos </button>
+                    <div class="collapse" id="videos">
+                        <div class="well video-container">
+                            <div id="vidResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container col-md-6 col-md-offset-3 wiki-container">
-        <div id="wikiResult"></div>
+    </div>
+
+    <div class="container col-lg-12 wiki-container">
+        <div></div>
     </div>
     </div>
-    <div class="container col-md-6 col-md-offset-3 social-container">
+    <div class="container col-lg-12 social-container">
         <div class="col-xs-3">
             <img src="images/my-icons-collection/png/facebook.png" id="facebook" height="40px" width="40px">
         </div>
