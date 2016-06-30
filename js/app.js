@@ -33,6 +33,7 @@ var wikiTeamSearch = function (data) {
         });
 };
 
+// team sections function
 
 var wikiTeamSections = function (data) {
     var searchTeam = $("#team-name").val();
@@ -50,7 +51,7 @@ var wikiTeamSections = function (data) {
         .done(function showResult(data) {
             //console.log("success");
             var html = "";
-            $.each(data, function (index, value) {
+            $.each(data, function (index, value, object) {
                 html += '<p>' + value.sections + '</p>';
                 console.log(value.sections);
             });
@@ -65,21 +66,73 @@ var wikiTeamSections = function (data) {
         });
 };
 
-//function to show wiki team information
+//team image function
 
 
-//function to go and get team name and find fixtures
+//function to go and get team name and find fixtures from google
+
+//function to get videos
+
+var videoSearch = function (data) {
+    //alert(query);
+    var getResult = $("#team-name" + "Football Club").val();
+
+    var html = "";
+
+    $.getJSON("https://www.googleapis.com/youtube/v3/search", {
+            part: "snippet",
+            maxResults: 10,
+            key: "AIzaSyAWblRjcTmS4TactzoaSQz-vhAQeXXb7as",
+            q: getResult,
+            type: "video"
+        },
+        function (data) {
+            console.log(data);
+            if (data.pageInfo.totalResults == 0) {
+                $('#videoResult').html("Sorry there are no videos for your club, please try another one.");
+            }
+            displaySearchResults(data.items);
+        });
+    var displaySearchResults = function (videoArray) {
+        var buildTheHtmlOutput = "";
+
+        $.each(videoArray, function (videoArrayKey, videoArrayValue) {
+            buildTheHtmlOutput += "<li>";
+            buildTheHtmlOutput += "<p>" + videoArrayValue.snippet.title + "</p>"
+            buildTheHtmlOutput += "<a href='https://www.youtube.com/watch?v=" + videoArrayValue.id.videoId + "' target='_blank'>";
+            buildTheHtmlOutput += "<img src='" + videoArrayValue.snippet.thumbnails.high.url + "'height=80px width=80px/>";
+            buildTheHtmlOutput += "</a>";
+            buildTheHtmlOutput += "</li>";
+
+        });
+        $(".video-container ul").html(buildTheHtmlOutput);
+    };
+};
+
 
 //function to hide all the tabs
 
+var hideTabs = function () {
+    $('.tab-container').hide();
+};
+
 //function to show all the tabs when search is complete
 
+var showTabs = function () {
+    $('.tab-container').show();
+};
+
+
 $(function () {
+
+    hideTabs();
 
     $('#submit').on("click", function (e) {
         e.preventDefault();
         wikiTeamSearch();
         wikiTeamSections();
+        videoSearch();
+        showTabs();
     });
 
 });

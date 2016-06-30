@@ -56,6 +56,10 @@ h1 {
     background-color: aquamarine;
 }
 
+#videoResult {
+    list-style: outside none none;
+}
+
 
 /* -------------------------------------
 Header styles (Main Module)
