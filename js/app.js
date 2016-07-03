@@ -3,33 +3,40 @@
 //function to take team name and go to wikipedia
 
 var wikiTeamSearch = function (data) {
-    var searchTeam = $("#team-name").val();
-    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + " F.C. " + "&format=json&callback=?";
+    var searchTeam = $("#team-name").val() + " football club ";
+    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + "&format=json&callback=?";
     $.ajax({
             url: dynamicURL,
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             async: false,
-            dataType: 'jsonp',
-            success: function (data, jqXHR) {
-                console.log(data);
-            },
+            dataType: 'jsonp'
         })
         .done(function showResult(data) {
-            //console.log("success");
-            var html = "";
-            $.each(data, function (index, value) {
-                html += '<p>' + value.displaytitle + '</p>';
-                console.log(value.displaytitle);
-            });
-            $('#wikiTeamTitle').html(html);
+            console.log(data);
+            if (data.error) {
+                alert("no result");
+                $('.errorMessage').text("No team info found! Try again");
+            } else {
+                var html = "";
+                $.each(data, function (index, value) {
+                    if (value.displaytitle) {
+                        html += '<p>' + value.displaytitle + '</p>';
+                    }
+                    //console.log(value);
+                });
+                //console.log(html);
+                if (html != "") {
+                    $('#wikiTeamTitle').html(html);
+                }
+            }
         })
         .fail(function (jqXHR, error) { //this waits for the ajax to return with an error promise object
             var errorElem = showError(error);
-            $('#wikiTeamTitle').append(errorElem);
+            //$('.errorMessage').append(errorElem);
         })
         .always(function () {
-            console.log("complete");
+            //console.log("complete");
         });
 };
 
@@ -43,26 +50,23 @@ var wikiTeamSections = function (data) {
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             async: false,
-            dataType: 'jsonp',
-            success: function (data, jqXHR) {
-                console.log(data);
-            },
+            dataType: 'jsonp'
         })
         .done(function showResult(data) {
             //console.log("success");
             var html = "";
-            $.each(data, function (index, value, object) {
+            $.each(data, function (index, value) {
                 html += '<p>' + value.sections + '</p>';
-                console.log(value.sections);
+                console.log(value.sections[1]);
             });
-            $('wikiSections').html(html);
+            $('#wikiSections').html(html);
         })
         .fail(function (jqXHR, error) { //this waits for the ajax to return with an error promise object
             var errorElem = showError(error);
-            $('#wikiTeamTitle').append(errorElem);
+            //$('.errorMessage').append(errorElem);
         })
         .always(function () {
-            console.log("complete");
+            //console.log("complete");
         });
 };
 
@@ -71,11 +75,15 @@ var wikiTeamSections = function (data) {
 
 //function to go and get team name and find fixtures from google
 
+var googleFixtures = function () {
+
+};
+
 //function to get videos
 
 var videoSearch = function (data) {
     //alert(query);
-    var getResult = $("#team-name" + "Football Club").val();
+    var getResult = $("#team-name").val() + " football ";
 
     var html = "";
 
@@ -87,9 +95,9 @@ var videoSearch = function (data) {
             type: "video"
         },
         function (data) {
-            console.log(data);
+            //console.log(data);
             if (data.pageInfo.totalResults == 0) {
-                $('#videoResult').html("Sorry there are no videos for your club, please try another one.");
+                $('.errorMessage').html("Sorry there are no videos for your club, please try another one.");
             }
             displaySearchResults(data.items);
         });
@@ -100,7 +108,7 @@ var videoSearch = function (data) {
             buildTheHtmlOutput += "<li>";
             buildTheHtmlOutput += "<p>" + videoArrayValue.snippet.title + "</p>"
             buildTheHtmlOutput += "<a href='https://www.youtube.com/watch?v=" + videoArrayValue.id.videoId + "' target='_blank'>";
-            buildTheHtmlOutput += "<img src='" + videoArrayValue.snippet.thumbnails.high.url + "'height=80px width=80px/>";
+            buildTheHtmlOutput += "<img src='" + videoArrayValue.snippet.thumbnails.high.url + "' width='100%'/>";
             buildTheHtmlOutput += "</a>";
             buildTheHtmlOutput += "</li>";
 
