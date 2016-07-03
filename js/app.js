@@ -1,5 +1,23 @@
 // error function
 
+//news api
+
+var news = function (data) {
+    var searchTeam = $("#team-name").val() + " football club ";
+    var dynamicURLMicro = "https://bingapis.azure-api.net/api/v5/news/search?q=european+football";
+
+    $.ajax({
+            _type: "News",
+            readLink: dynamicURLMicro,
+            totalEstimatedMatches: 1680000,
+            key: "d8e91c36a55040dc9bfbfe1759c3a39a",
+        })
+        .done(function showResult(data) {
+            console.log(data);
+        })
+}
+
+
 //function to take team name and go to wikipedia
 
 var wikiTeamSearch = function (data) {
@@ -15,8 +33,8 @@ var wikiTeamSearch = function (data) {
         .done(function showResult(data) {
             console.log(data);
             if (data.error) {
-                alert("no result");
-                $('.errorMessage').text("No team info found! Try again");
+                //alert("no result");
+                $('.errorMessage').text("No team information found! Try capitalising the first letter, or try another club.");
             } else {
                 var html = "";
                 $.each(data, function (index, value) {
@@ -44,7 +62,7 @@ var wikiTeamSearch = function (data) {
 
 var wikiTeamSections = function (data) {
     var searchTeam = $("#team-name").val();
-    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + " F.C. " + "&format=json&callback=?";
+    var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + searchTeam + " F.C. " + "&callback=?";
     $.ajax({
             url: dynamicURL,
             type: 'GET',
@@ -52,14 +70,31 @@ var wikiTeamSections = function (data) {
             async: false,
             dataType: 'jsonp'
         })
-        .done(function showResult(data) {
+        /*.done(function showResult(data) {
             //console.log("success");
             var html = "";
             $.each(data, function (index, value) {
-                html += '<p>' + value.sections + '</p>';
-                console.log(value.sections[1]);
+                html += '<p>' + value.text + '</p>';
+                //console.log(value.sections[1]);
             });
             $('#wikiSections').html(html);
+        })*/
+        .done(function (data, textStatus, jqXHR) {
+
+            var markup = data.parse.text["*"];
+            var blurb = $('<div></div>').html(markup);
+
+            // remove links as they will not work
+            blurb.find('a').each(function () {
+                $(this).replaceWith($(this).html());
+            });
+
+            // remove any references
+            blurb.find('sup').remove();
+
+            // remove cite error
+            blurb.find('.mw-ext-cite-error').remove();
+            $('#wikiSections').html($(blurb).find('p'));
         })
         .fail(function (jqXHR, error) { //this waits for the ajax to return with an error promise object
             var errorElem = showError(error);
@@ -70,14 +105,6 @@ var wikiTeamSections = function (data) {
         });
 };
 
-//team image function
-
-
-//function to go and get team name and find fixtures from google
-
-var googleFixtures = function () {
-
-};
 
 //function to get videos
 
@@ -140,6 +167,7 @@ $(function () {
         wikiTeamSearch();
         wikiTeamSections();
         videoSearch();
+        news();
         showTabs();
     });
 

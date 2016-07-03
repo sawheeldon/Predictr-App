@@ -40,24 +40,6 @@
                 </div>
                 <div class="col-xs-12 tab-container">
                     <div class="col-md-4">
-                        <button class="btn btn-default" data-toggle="collapse" data-target="#wiki"> Info </button>
-                        <div class="collapse" id="wiki">
-                            <div class="well wiki-container">
-                                <div id="wikiTeamTitle"></div>
-                                <div id="wikiTeamImage"></div>
-                                <div id="wikiSections"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-default" data-toggle="collapse" data-target="#fixtures"> Fixtures </button>
-                        <div class="collapse" id="fixtures">
-                            <div class="well fixture-container">
-                                <div id="fixResult"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
                         <button class="btn btn-default" data-toggle="collapse" data-target="#videos"> Videos </button>
                         <div class="collapse" id="videos">
                             <div class="well video-container">
@@ -65,12 +47,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default" data-toggle="collapse" data-target="#wiki"> Info </button>
+                        <div class="collapse" id="wiki">
+                            <div class="well wiki-container">
+                                <div class="col-xs-12 errorMessage"> </div>
+                                <div id="wikiTeamTitle"></div>
+                                <div id="wikiTeamImage"></div>
+                                <div id="wikiSections"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default" data-toggle="collapse" data-target="#news"> News </button>
+                        <div class="collapse" id="news">
+                            <div class="well news-container">
+                                <div id="newsResult"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <!-- the results will be displayed here -->
-        <section class="col-xs-12 wiki-container"> </section>
-        <section class="col-xs-12 errorMessage"> </section>
     </main>
     <footer class="container social-container">
         <section class="col-lg-12">
