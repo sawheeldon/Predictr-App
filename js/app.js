@@ -2,7 +2,7 @@
 
 //news api
 
-var news = function (data) {
+/*var news = function (data) {
     var searchTeam = $("#team-name").val() + " football club ";
     var dynamicURLMicro = "https://bingapis.azure-api.net/api/v5/news/search?q=european+football";
 
@@ -15,13 +15,40 @@ var news = function (data) {
         .done(function showResult(data) {
             console.log(data);
         })
-}
+}*/
+//make capital
+/*
+google.load("feeds", "1");
 
+function initialize() {
+    var searchTeam = $("#team-name").val();
+    var feed = new google.feeds.Feed("http://talksport.com/rss/football/" + searchTeam + "/feed");
+    feed.load(function (result) {
+        //console.log(result);
+        if (!result.error) {
+            for (var i = 0; i < result.feed.entries.length; i++) {
+                var entry = result.feed.entries[i];
+                //console.log(entry);
+                $('#news').text(entry.title);
+            }
+        };
+    });
+};
+google.setOnLoadCallback(initialize);
+*/
+
+var toTitleCase = function (str) {
+    // "/\w\S*/g" is a regular expression (http://www.regular-expressions.info/) which searches for all words in a phrase ignoring the spaces
+    return str.replace(/\w\S*/g, function (txt) {
+        //only the first letter in the word make Upper case and all the other letters apart from the first one ("substr(1)") to lower case
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
 
 //function to take team name and go to wikipedia
 
 var wikiTeamSearch = function (data) {
-    var searchTeam = $("#team-name").val() + " football club ";
+    var searchTeam = toTitleCase($("#team-name").val() + " football club ");
     var dynamicURL = "https://en.wikipedia.org/w/api.php?action=parse&page=" + searchTeam + "&format=json&callback=?";
     $.ajax({
             url: dynamicURL,
@@ -34,7 +61,7 @@ var wikiTeamSearch = function (data) {
             console.log(data);
             if (data.error) {
                 //alert("no result");
-                $('.errorMessage').text("No team information found! Try capitalising the first letter, or try another club.");
+                $('.errorMessage').text("Sorry no team history found on your club.");
             } else {
                 var html = "";
                 $.each(data, function (index, value) {
@@ -167,7 +194,6 @@ $(function () {
         wikiTeamSearch();
         wikiTeamSections();
         videoSearch();
-        news();
         showTabs();
     });
 
