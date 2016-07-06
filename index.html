@@ -17,33 +17,6 @@
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-        google.load("feeds", "1");
-
-        function OnLoad() {
-            // Query for football team news
-            var searchTeam = $("#team-name").val();
-            var query = 'site:http://talksport.com/rss/football/' + searchTeam + '/feed';
-            google.feeds.findFeeds(query, findDone);
-        };
-
-        function findDone(result) {
-            // Make sure we didn't get an error.
-            if (!result.error) {
-                // Get content div
-                var content = document.getElementById('content');
-                var html = '';
-                // Loop through the results and print out the title of the feed and link to
-                // the url.
-                for (var i = 0; i < result.entries.length; i++) {
-                    var entry = result.entries[i];
-                    console.log(result);
-                    html += '<p><a href="http://talksport.com/rss/football/feed" + entry.url + ">' + entry.title + '</a></p>';
-                    $('#news').text(entry.title);
-                }
-            }
-        };
-
-        google.setOnLoadCallback(OnLoad);
     </script>
 
     <!-- My Theme -->
@@ -61,7 +34,7 @@
                     <form action="" method="">
                         <div class="form-group getTeam">
                             <label for="team-name"> Football Team Name </label>
-                            <input type="team-name" class="form-control" id="team-name" name="teamName">
+                            <input type="team-name" class="form-control" id="team-name" name="teamName" value="Liverpool">
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-default submitTeam" id="submit" name="teamInput">
@@ -75,9 +48,6 @@
                                 <div class="col-xs-12 errorMessage"> </div>
                                 <div id="wikiTeamTitle"></div>
                                 <div id="wikiSections"></div>
-                            </div>
-                            <div class="well news-container">
-                                <ul id="news"></ul>
                             </div>
                             <div class="well video-container">
                                 <ul id="videoResult"></ul>

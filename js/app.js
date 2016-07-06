@@ -17,8 +17,11 @@
         })
 }*/
 //make capital
-/*
-google.load("feeds", "1");
+
+//Version one on load *******
+
+
+/*google.load("feeds", "1");
 
 function initialize() {
     var searchTeam = $("#team-name").val();
@@ -35,7 +38,67 @@ function initialize() {
     });
 };
 google.setOnLoadCallback(initialize);
+
 */
+
+//Version two on call in theory *******
+
+/*google.load("feeds", "1");
+
+function OnLoad() {
+    // Query for football team news
+    var searchTeam = $("#team-name").val();
+    var query = 'site:http://talksport.com/rss/football/' + searchTeam + '/feed';
+    google.feeds.findFeeds(query, findDone);
+};
+
+function findDone(result) {
+    // Make sure we didn't get an error.
+    if (!result.error) {
+        // Get content div
+        var content = document.getElementById('content');
+        var html = '';
+        // Loop through the results and print out the title of the feed and link to
+        // the url.
+        for (var i = 0; i < result.entries.length; i++) {
+            var entry = result.entries[i];
+            console.log(result);
+            html += '<p><a href="http://talksport.com/rss/football/feed" + entry.url + ">' + entry.title + '</a></p>';
+            $('#news').text(entry.title);
+        }
+    }
+};
+
+google.setOnLoadCallback(OnLoad);
+*/
+
+/*function OnLoad() {
+    // Query for football team news
+    console.log("success");
+    var searchTeam = $("#team-name").val();
+    var query = ('site:http://talksport.com/rss/football/' + searchTeam + '/feed');
+    google.feeds.findFeeds(query, findDone);
+};
+
+function findDone(result) {
+    console.log(google.feeds.findFeeds(query, findDone));
+    // Make sure we didn't get an error.
+    if (!result.error) {
+        // Get content div
+        var content = document.getElementById('content');
+        var html = '';
+        // Loop through the results and print out the title of the feed and link to
+        // the url.
+        for (var i = 0; i < result.entries.length; i++) {
+            var entry = result.entries[i];
+            console.log(result);
+            html += '<p><a href="http://talksport.com/rss/football/feed" + entry.url + ">' + entry.title + '</a></p>';
+            $('#content').text(entry.title);
+        }
+    }
+};
+*/
+
 
 var toTitleCase = function (str) {
     // "/\w\S*/g" is a regular expression (http://www.regular-expressions.info/) which searches for all words in a phrase ignoring the spaces
@@ -184,6 +247,7 @@ var showTabs = function () {
     $('.tab-container').show();
 };
 
+google.load("feeds", "1");
 
 $(function () {
 
@@ -191,10 +255,14 @@ $(function () {
 
     $('#submit').on("click", function (e) {
         e.preventDefault();
+
+
         wikiTeamSearch();
         wikiTeamSections();
         videoSearch();
         showTabs();
+        //google.setOnLoadCallback(OnLoad);
+        //google.setOnLoadCallback(initialize);
     });
 
 });
