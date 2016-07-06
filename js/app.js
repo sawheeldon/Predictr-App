@@ -247,7 +247,7 @@ var showTabs = function () {
     $('.tab-container').show();
 };
 
-google.load("feeds", "1");
+//google.load("feeds", "1");
 
 $(function () {
 
@@ -255,8 +255,6 @@ $(function () {
 
     $('#submit').on("click", function (e) {
         e.preventDefault();
-
-
         wikiTeamSearch();
         wikiTeamSections();
         videoSearch();
