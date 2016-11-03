@@ -41,23 +41,28 @@ h1 {
 }
 
 .top-container {
-    padding: 5rem;
+    padding: 1rem;
 }
 
 .main-container {
-    padding: 10rem;
+    padding: 0.5rem;
     padding-top: 10rem;
-    background-color: aquamarine
+    background-color: aquamarine;
 }
 
 .social-container {
     margin-top: 2rem;
-    padding: 2rem;
+    padding: 1rem;
     background-color: aquamarine;
 }
 
+.vidRes{
+    padding:1rem;
+    background-color: #e8e8e8;
+}
 #videoResult {
     list-style: outside none none;
+
 }
 
 

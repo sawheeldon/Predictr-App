@@ -206,7 +206,7 @@ var videoSearch = function (data) {
 
     $.getJSON("https://www.googleapis.com/youtube/v3/search", {
             part: "snippet",
-            maxResults: 10,
+            maxResults: 12,
             key: "AIzaSyAWblRjcTmS4TactzoaSQz-vhAQeXXb7as",
             q: getResult,
             type: "video"
@@ -222,12 +222,11 @@ var videoSearch = function (data) {
         var buildTheHtmlOutput = "";
 
         $.each(videoArray, function (videoArrayKey, videoArrayValue) {
-            buildTheHtmlOutput += "<li>";
-            buildTheHtmlOutput += "<p>" + videoArrayValue.snippet.title + "</p>"
+            buildTheHtmlOutput += '<div class="col-xs-4 vidRes" >';
             buildTheHtmlOutput += "<a href='https://www.youtube.com/watch?v=" + videoArrayValue.id.videoId + "' target='_blank'>";
-            buildTheHtmlOutput += "<img src='" + videoArrayValue.snippet.thumbnails.high.url + "' width='100%'/>";
+            buildTheHtmlOutput += "<img  src='" + videoArrayValue.snippet.thumbnails.high.url + "' width='100%'/>";
             buildTheHtmlOutput += "</a>";
-            buildTheHtmlOutput += "</li>";
+            buildTheHtmlOutput += "</div>";
 
         });
         $(".video-container ul").html(buildTheHtmlOutput);
