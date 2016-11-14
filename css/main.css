@@ -29,31 +29,35 @@ General styles (General Module, wrapping around the modules bellow)
 
 body {
     text-align: center;
-    background-color: palegreen;
+    background-color: #7EB270;
     color: dimgray;
-    font-family: 'Indie Flower', cursive;
-    font-size: 15px
+    font-family: 'Andika', sans-serif;
+    font-size: 18px
 }
 
 h1 {
-    font-family: 'Bangers', cursive;
-    font-size: 40px
+    font-family: 'Amatic SC', cursive;
+    color:black;
+    font-size: 60px
 }
 
-.top-container {
+header {
+    margin-top:5rem;
     padding: 1rem;
+}
+
+#football{
+    transition: all .8s;
+}
+#football:hover{
+  transform: scale(1.2) rotate(200deg);
 }
 
 .main-container {
-    padding: 0.5rem;
-    padding-top: 10rem;
-    background-color: aquamarine;
-}
-
-.social-container {
-    margin-top: 2rem;
+    margin-top:3rem;
     padding: 1rem;
-    background-color: aquamarine;
+    padding-top: 1rem;
+    background-color: #C8FFB9;
 }
 
 .vidRes{
@@ -62,9 +66,24 @@ h1 {
 }
 #videoResult {
     list-style: outside none none;
-
+}
+.thanksSection {
+    margin-top: 5rem;
+    padding: 1rem;
+    background-color: #DCFFD3;
+}
+.thanksInside{
+  display: inline-block;
 }
 
+.footballFooter {
+  width:40px;
+  height:40px;
+  transition: all .8s;
+}
+.footballFooter:hover{
+  transform: scale(1.2) rotate(200deg);
+}
 
 /* -------------------------------------
 Header styles (Main Module)

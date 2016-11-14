@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Soccernopoly</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://fontawesome.io/#modal-download">
-    <link href='https://fonts.googleapis.com/css?family=Indie+Flower|Poiret+One|Passion+One|Anton|Sigmar+One|Shadows+Into+Light|Bangers' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Andika" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <!-- My Theme -->
     <link rel="stylesheet" href="css/main.css">
-    </script>
-
-    <!-- My Theme -->
 </head>
 
 <body>
+    <!-- Start of Title and Image section -->
+    <header class="col-xs-12">
+        <img id="football" src="images/football-icons/png/football-1.png">
+        <h1>SOCCERNOPOLY</h1>
+        <p>Type in your team below and get all the information you need.</p>
+    </header>
+    <!-- End of Title and Image section -->
+
+    <!-- Start of Main section -->
     <main class="container">
-        <header class="col-xs-12 top-container"></header>
         <section class="col-xs-12 main-container">
-            <img src="images/football-icons/png/football-1.png">
-            <h1>Soccernopoly</h1>
-            <p>Type in your team and get all the information you need.</p>
-            <div class="col-xs-12">
-                <div class="col-xs-12 search-container">
+
+                <!-- Start of Search Football Team section -->
+                <div class="search-container">
                     <form action="" method="">
                         <div class="form-group getTeam">
                             <label for="team-name"> Football Team Name </label>
@@ -39,8 +40,10 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-xs-12 tab-container">
-                    <div class="col-xs-12">
+                <!-- End of Search Football Team section -->
+
+                <!-- Start of Results section -->
+                <div class="tab-container">
                         <div id="videos">
                             <div class="well wiki-container">
                                 <div class="col-xs-12 errorMessage"> </div>
@@ -51,32 +54,23 @@
                                 <ul id="videoResult"></ul>
                             </div>
                         </div>
-                    </div>
-
                 </div>
-            </div>
+                <!-- End of Results section -->
         </section>
     </main>
-    <footer class="container social-container">
-        <section class="col-lg-12">
-            <div class="col-xs-3">
-                <img src="images/my-icons-collection/png/facebook.png" id="facebook" height="40px" width="40px">
-            </div>
-            <div class="col-xs-3">
-                <img src="images/my-icons-collection/png/twitter.png" id="twitter" height="40px" width="40px">
-            </div>
-            <div class="col-xs-3">
-                <img src="images/my-icons-collection/png/instagram.png" id="instagram" height="40px" width="40px">
-            </div>
-            <div class="col-xs-3">
-                <img src="images/my-icons-collection/png/whatsapp-logo.png" id="whatsapp" height="40px" width="40px">
-            </div>
+    <!-- End of Main section -->
+
+    <!-- Start of Footer thank you section -->
+    <footer>
+        <section class="col-sm-6 col-sm-offset-3 thanksSection">
+            <div class="thanksInside"><img class="footballFooter" src="images/football-icons/png/football-1.png"></div>
+                <div class="thanksInside">
+                    <p>Thanks for using Soccernopoly!</p>
+                </div>
+            <div class="thanksInside"><img class="footballFooter" src="images/football-icons/png/football-1.png"></div>
         </section>
-        <div id="branding"></div>
     </footer>
-
-
-    <!-- After Body -->
+    <!-- End of Footer thank you section -->
 
     <!-- external scripts -->
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
