@@ -104,3 +104,15 @@ Footer styles (Main Module)
 
 
 /* -------------------------------------
+
+
+/*iPhone landscape*/
+@media only screen and (max-width: 480px) {
+    body {
+        font-size:15px;
+    }
+    .footballFooter {
+      width:30px;
+      height:30px;
+    }
+}
